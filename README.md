@@ -17,11 +17,11 @@ First, you have to make sure that you users have only one role and each  path ca
     ...
 }
 ```  
-```json
+```js
 # route
 {
     path: "/",
-    meta:{
+    meta: {
         roles: ["PUBLIC","ADMIN"]
     }
     ...
