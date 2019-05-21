@@ -10,7 +10,7 @@ $ npm install vue-router-role
 ## Documentation
 First, you have to make sure that you users have only one role and each  path can be accessed by multiple users, like that:
 ```js
-# user
+/** user */
 {
     username:"xxx",
     role:"PUBLIC",
@@ -18,7 +18,7 @@ First, you have to make sure that you users have only one role and each  path ca
 }
 ```  
 ```js
-# route
+/** router */
 {
     path: "/",
     meta: {
