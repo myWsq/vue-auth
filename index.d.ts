@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter, { Route } from "vue-router";
 
-export interface VueRouterGuardOptions {
+export interface VueRouterRoleOptions {
   /** vue-router instance */
   router: VueRouter;
   /** get current authorized user's role */
@@ -18,5 +18,5 @@ export interface VueRouterGuardOptions {
   onForbidden?: (to: Route, from: Route) => any;
 }
 
-declare function _default(options: VueRouterGuardOptions): void;
+declare function _default(options: VueRouterRoleOptions): void;
 export default _default;
