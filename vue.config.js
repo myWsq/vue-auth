@@ -1,5 +1,5 @@
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === "production" ? "/vue-auth/" : "/",
+    process.env.NODE_ENV === "production" ? "/vue-router-guard/" : "/",
   outputDir: 'docs'
 };
