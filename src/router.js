@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import store from "./store";
+import VueAuth from "../index";
 Vue.use(Router);
 
 const router = new Router({
@@ -42,23 +43,18 @@ const router = new Router({
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
-  let { me } = store.state;
-  if (!me) {
-    me = await store.dispatch("getMe");
-  }
-  if (
-    to.matched.every(route => {
-      const roles = route.meta.roles;
-      return !roles || (me && roles.includes(me.role));
-    })
-  ) {
-    next();
-  } else if (me) {
-    next(`/403?required=${to.meta.roles}`);
-  } else {
-    next(`/login?next=${to.path}`);
-  }
+new VueAuth({
+  router,
+  metaField: "roles",
+  loginPath: "/login",
+  forbiddenPath: "/403",
+  async getRole() {
+    let { me } = store.state;
+    if (!me) {
+      me = await store.dispatch("getMe");
+    }
+    return store.state.me && store.state.me.role;
+  },
 });
 
 export default router;
